@@ -7,7 +7,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Nav from '@components/nav';
 import Sidebar from '@components/sidebar';
 
-
 export default function Layout({children}) {
     const [sideBarOpen, setSideBarOpen] = React.useState(true);
     const sidebarState = {
@@ -16,6 +15,9 @@ export default function Layout({children}) {
     }
 
     const useStyles = makeStyles((theme) => ({
+        root: {
+            flexGrow: 1,
+        },
         content: {
             flexGrow: 1,
             padding: theme.spacing(1),
@@ -37,19 +39,15 @@ export default function Layout({children}) {
 
     return (
         <React.Fragment>
-            <div className={classes.root}>
-                <CssBaseline/>
-                <Sidebar sidebarState = {sidebarState}>
-                    <Nav/>
-                </Sidebar>
-                <main className={clsx(classes.content, {
-                    [classes.contentShift]: sideBarOpen,
-                })}>
-                    <Container maxWidth={false}>
-                        {children}
-                    </Container>
-                </main>
-            </div>
+            <CssBaseline/>
+            <Sidebar sidebarState={sidebarState}>
+                <Nav/>
+            </Sidebar>
+            <main className={clsx(classes.content, {
+                [classes.contentShift]: sideBarOpen,
+            })}>
+                    {children}
+            </main>
         </React.Fragment>
     );
 }

@@ -47,10 +47,6 @@ export default function Sidebar(props) {
         <React.Fragment>
             <Drawer
                 variant="permanent"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: props.sidebarState.open,
-                    [classes.drawerClose]: !props.sidebarState.open,
-                })}
                 classes={{
                     paper: clsx({
                         [classes.drawerOpen]: props.sidebarState.open,

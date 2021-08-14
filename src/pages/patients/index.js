@@ -1,6 +1,15 @@
 import React, {useEffect} from 'react';
 
 import PatientsTable from "@domains/patients/PatientsTable";
+import PatientsTableFilter from "@domains/patients/PatientsTableFilter";
+
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import {PersonAddRounded} from "@material-ui/icons";
+import Box from "@material-ui/core/Box";
+
 
 export default function PatientsPage() {
     const [patients, setPatients] = React.useState([]);
@@ -20,9 +29,28 @@ export default function PatientsPage() {
     }
 
     return (
-        <div>
-            {renderTable()}
-        </div>
+        <Grid container spacing={1}>
+            <Grid item xs={2}>
+                <Card>
+                    <CardContent>
+                        <Box mb={3}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<PersonAddRounded/>}
+                                mb={2}
+                            >
+                                Добавить
+                            </Button>
+                        </Box>
+                        <PatientsTableFilter/>
+                    </CardContent>
+                </Card>
+            </Grid>
+            <Grid item xs={10}>
+                {renderTable()}
+            </Grid>
+        </Grid>
     );
 
 
