@@ -4,7 +4,6 @@ const path = require('path');
 
 const {ipcMain} = require('electron')
 
-
 const createWindow = () => {
     // Create the browser window.
     const win = new BrowserWindow({
@@ -63,7 +62,8 @@ ipcMain.on("toMain", (event, args) => {
     event.reply("fromMain", 'data from main');
 });
 
-ipcMain.handle("patient/findAll", async (event, args) => {
+ipcMain.handle('patient/findAll', async (event, args) => {
     const Patient = require('./db/models/patient');
     return await Patient.findAll();
 });
+
