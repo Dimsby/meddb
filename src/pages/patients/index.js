@@ -25,11 +25,11 @@ export default function PatientsPage() {
         if (patients.length)
             return (<PatientsTable rows={patients}/>)
         else
-            return (<p>Loading...</p>)
+            return (<p>Загрузка...</p>)
     }
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={3}>
             <Grid item xs={2}>
                 <Card>
                     <CardContent>
@@ -38,7 +38,6 @@ export default function PatientsPage() {
                                 variant="contained"
                                 color="primary"
                                 startIcon={<PersonAddRounded/>}
-                                mb={2}
                             >
                                 Добавить
                             </Button>
