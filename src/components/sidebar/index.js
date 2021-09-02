@@ -8,6 +8,12 @@ import {makeStyles} from '@material-ui/core/styles';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import {Link} from "react-router-dom";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+
+import useJupiterListItemStyles from '@components/sidebar/style';
 
 /* export const UserContext = React.createContext({
     state: initialState,
@@ -35,9 +41,21 @@ export default function Sidebar(props) {
             }),
             overflowX: 'hidden',
             width: theme.myDrawer.widthClosed,
+        },
+        drawerPaper: {background: "transparent", border: "none"},
+        chevronStyles: {
+            root: {
+                borderRadius: 20,
+                backgroundColor: "white",
+                padding: '0.5rem 1rem',
+                '&:hover': {
+                    backgroundColor: "white"
+                },
+            }
         }
     }));
     const classes = useStyles();
+    const chevronStyles = useJupiterListItemStyles();
 
     const handleDrawerClick = () => {
         props.sidebarState.toggle();
@@ -48,18 +66,20 @@ export default function Sidebar(props) {
             <Drawer
                 variant="permanent"
                 classes={{
-                    paper: clsx({
+                    paper: clsx(classes.drawerPaper, {
                         [classes.drawerOpen]: props.sidebarState.open,
                         [classes.drawerClose]: !props.sidebarState.open,
                     }),
                 }}
             >
-                <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClick}>
-                        {props.sidebarState.open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
+                <List>
+                    <ListItem onClick={handleDrawerClick} classes={chevronStyles} button component={Link} to={"/"}>
+                        <ListItemIcon>
+                            {props.sidebarState.open ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                        </ListItemIcon>
+                    </ListItem>
+                </List>
+
                 {props.children}
             </Drawer>
         </React.Fragment>

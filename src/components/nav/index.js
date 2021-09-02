@@ -13,7 +13,7 @@ import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 const nav = () => {
     return (
         <div>
-            <List aria-label="main mailbox folders">
+            <List>
                 <ListItem button component={Link} to={"/"} >
                     <ListItemIcon>
                         <HomeRoundedIcon />
