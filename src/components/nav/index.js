@@ -13,7 +13,7 @@ import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 const nav = () => {
     return (
         <div>
-            <List>
+            <List dense>
                 <ListItem button component={Link} to={"/"} >
                     <ListItemIcon>
                         <HomeRoundedIcon />

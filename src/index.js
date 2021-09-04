@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//import '@fontsource/roboto';
+import '@fontsource/roboto';
 
 import Pages from './pages';
 import reportWebVitals from './reportWebVitals';

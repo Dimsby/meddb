@@ -3,7 +3,7 @@ import {createTheme, createStyles} from '@material-ui/core/styles';
 const theme = createTheme({
     myDrawer: {
         widthOpen: 200,
-        widthClosed: 55
+        widthClosed: 85
     },
     content: {
         flexGrow: 1,
@@ -18,6 +18,16 @@ const theme = createTheme({
             rounded: {
                 borderRadius: '16px'
             },
+        },
+        MuiListItem: {
+            root: {
+                borderRadius: '16px'
+            }
+        },
+        MuiButton: {
+            root: {
+                borderRadius: '16px'
+            }
         }
     }
 })

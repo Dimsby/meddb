@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 //import { reducer, initialState } from "./reducer";
 
-import {Drawer, Divider, IconButton} from '@material-ui/core';
+import {Drawer} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -13,51 +13,31 @@ import ListItem from "@material-ui/core/ListItem";
 import {Link} from "react-router-dom";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
-import useJupiterListItemStyles from '@components/sidebar/style';
-
-/* export const UserContext = React.createContext({
-    state: initialState,
-    dispatch: () => null
-}) */
+const useStyles = makeStyles((theme) => ({
+    drawerOpen: {
+        width: theme.myDrawer.widthOpen,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        })
+    },
+    drawerClose: {
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        overflowX: 'hidden',
+        width: theme.myDrawer.widthClosed
+    },
+    drawerPaper: {background: "transparent", border: "none", paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2)}
+}));
 
 export default function Sidebar(props) {
-    const useStyles = makeStyles((theme) => ({
-        drawer: {
-            width: theme.myDrawer.widthOpen,
-            flexShrink: 0,
-            whiteSpace: 'nowrap',
-        },
-        drawerOpen: {
-            width: theme.myDrawer.widthOpen,
-            transition: theme.transitions.create('width', {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.enteringScreen,
-            }),
-        },
-        drawerClose: {
-            transition: theme.transitions.create('width', {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen,
-            }),
-            overflowX: 'hidden',
-            width: theme.myDrawer.widthClosed,
-        },
-        drawerPaper: {background: "transparent", border: "none"},
-        chevronStyles: {
-            root: {
-                borderRadius: 20,
-                backgroundColor: "white",
-                padding: '0.5rem 1rem',
-                '&:hover': {
-                    backgroundColor: "white"
-                },
-            }
-        }
-    }));
-    const classes = useStyles();
-    const chevronStyles = useJupiterListItemStyles();
 
-    const handleDrawerClick = () => {
+    const classes = useStyles();
+
+    const handleDrawerClick = (e) => {
+        e.preventDefault();
         props.sidebarState.toggle();
     };
 
@@ -73,8 +53,8 @@ export default function Sidebar(props) {
                 }}
             >
                 <List>
-                    <ListItem onClick={handleDrawerClick} classes={chevronStyles} button component={Link} to={"/"}>
-                        <ListItemIcon>
+                    <ListItem onClick={handleDrawerClick} button component={Link} to={"/"}>
+                        <ListItemIcon >
                             {props.sidebarState.open ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
                         </ListItemIcon>
                     </ListItem>
