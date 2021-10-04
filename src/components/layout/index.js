@@ -1,11 +1,11 @@
 import React from "react";
 import clsx from 'clsx';
 
-import {CssBaseline, Container} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import {CssBaseline, Container} from '@mui/material';
 
 import Nav from '@components/nav';
 import Sidebar from '@components/sidebar';
+import Box from "@mui/material/Box";
 
 export default function Layout({children}) {
     const [sideBarOpen, setSideBarOpen] = React.useState(true);
@@ -14,6 +14,7 @@ export default function Layout({children}) {
         toggle: () => setSideBarOpen(!sideBarOpen)
     }
 
+    /*
     const useStyles = makeStyles((theme) => ({
         content: {
             flexGrow: 1,
@@ -33,7 +34,7 @@ export default function Layout({children}) {
             marginLeft: theme.myDrawer.widthOpen,
         }
     }));
-    const classes = useStyles();
+    const classes = useStyles(); */
 
     return (
         <React.Fragment>
@@ -41,11 +42,11 @@ export default function Layout({children}) {
             <Sidebar sidebarState={sidebarState}>
                 <Nav/>
             </Sidebar>
-            <main className={clsx(classes.content, {
+            <Box sx={{marginLeft: '200px', p: 2}} /*className={clsx(classes.content, {
                 [classes.contentShift]: sideBarOpen,
-            })}>
-                    {children}
-            </main>
+            })}*/>
+                {children}
+            </Box>
         </React.Fragment>
     );
 }

@@ -1,20 +1,20 @@
 import React from "react";
 
-import TableContainer from "@material-ui/core/TableContainer";
-import Table from "@material-ui/core/Table";
-import TableRow from "@material-ui/core/TableRow";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import {makeStyles} from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import TableContainer from "@mui/material/TableContainer";
+import Table from "@mui/material/Table";
+import TableRow from "@mui/material/TableRow";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+//import {makeStyles} from "@mui/styles";
+import Paper from "@mui/material/Paper";
 
 import TableHeader from "@components/tableHeader";
 
 
 export default function TableCommon(props) {
 
-    const useStyles = makeStyles((theme) => ({}));
-    const classes = useStyles();
+   // const useStyles = makeStyles((theme) => ({}));
+   // const classes = useStyles();
 
     return (
         <TableContainer component={Paper}>

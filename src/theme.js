@@ -1,4 +1,4 @@
-import {createTheme, createStyles} from '@material-ui/core/styles';
+import {createTheme, createStyles} from '@mui/styles';
 
 const theme = createTheme({
     myDrawer: {

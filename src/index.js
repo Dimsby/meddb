@@ -6,14 +6,14 @@ import '@fontsource/roboto';
 import Pages from './pages';
 import reportWebVitals from './reportWebVitals';
 
+/*
 import theme from './theme';
-import { ThemeProvider } from '@material-ui/core/styles'
+import {ThemeProvider as MuiThemeProvider, StylesProvider} from '@mui/styles';
+import {ThemeProvider} from '@emotion/react'; */
 
 ReactDOM.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <Pages/>
-        </ThemeProvider>
+        <Pages/>
     </React.StrictMode>,
     document.getElementById('root')
 );

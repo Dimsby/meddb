@@ -1,6 +1,6 @@
-import {TableRow, TableCell, Collapse, IconButton} from "@material-ui/core";
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import {TableRow, TableCell, Collapse, IconButton} from "@mui/material";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import React from "react";
 
@@ -9,14 +9,14 @@ export default function TableRowCollapsible(props) {
     const [open, setOpen] = React.useState(false);
 
     const renderRow = () => {
-        return props.headers.map(function (header) {
-            if (header.data) return <TableCell>{props.row[header.data]}</TableCell>
+        return props.headers.map(function (header, i) {
+            if (header.data) return <TableCell key={i}>{props.row[header.data]}</TableCell>
         })
     }
 
     return (
         <React.Fragment>
-            <TableRow key={props.row.id}>
+            <TableRow key={'row' + props.row.id}>
                 <TableCell>
                     <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
                         {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
@@ -25,7 +25,7 @@ export default function TableRowCollapsible(props) {
                 {renderRow()}
             </TableRow>
             <TableRow>
-                <TableCell colSpan={props.headers.length}>
+                <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={props.headers.length}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         {props.children}
                     </Collapse>

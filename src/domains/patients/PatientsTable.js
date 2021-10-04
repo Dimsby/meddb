@@ -1,17 +1,14 @@
 import React from "react";
 
-import TableContainer from "@material-ui/core/TableContainer";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
 
 import TableHeader from "@components/tableHeader";
 import TableRowCollapsible from "@components/tableRowCollapsible";
-import TableHead from "@material-ui/core/TableHead";
-import {Box, ListItem, ListItemText} from "@material-ui/core";
-import List from "@material-ui/core/List";
+import {Box, ListItem, ListItemText} from "@mui/material";
+import List from "@mui/material/List";
 
 
 export default function PatientsTable(props) {
@@ -23,21 +20,16 @@ export default function PatientsTable(props) {
         {title: 'Дата рождения', data: 'dateBirth'},
     ];
 
-    const flexContainer = {
-        display: 'flex',
-        flexDirection: 'row',
-        padding: 0,
-    };
-
+    console.log('table render');
     return (
         <TableContainer component={Paper}>
             <Table size="small">
                 <TableHeader headers={headers}/>
                 <TableBody>
-                    {props.rows.map((row) => (
-                        <TableRowCollapsible row={row} headers={headers}>
+                    {props.rows.map((row) =>
+                        <TableRowCollapsible key={row.id} row={row} headers={headers}>
                             <Box>
-                                <List style={flexContainer}>
+                                <List>
                                     <ListItem>
                                         <ListItemText secondary="Физический адрес" primary={row.adrPhys}/>
                                         <ListItemText secondary="Адрес регистрации" primary={row.adrReg}/>
@@ -48,9 +40,8 @@ export default function PatientsTable(props) {
                                 </List>
                             </Box>
 
-
                         </TableRowCollapsible>
-                    ))}
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>

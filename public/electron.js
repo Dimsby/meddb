@@ -26,11 +26,11 @@ const createWindow = () => {
     );
 
     // Open the DevTools.
-    if (isDev) {
-        win.webContents.on('did-frame-finish-load', () => {
+ //   if (isDev) {
+ //       win.webContents.on('did-frame-finish-load', () => {
             win.webContents.openDevTools({mode: 'detach'});
-        });
-    }
+   //     });
+  //  }
 }
 
 // This method will be called when Electron has finished
@@ -63,7 +63,17 @@ ipcMain.on("toMain", (event, args) => {
 });
 
 ipcMain.handle('patient/findAll', async (event, args) => {
-    const Patient = require('./db/models/patient');
+    const Patient = require('./app/controllers/patient');
     return await Patient.findAll();
 });
+ipcMain.handle('patient/add', async (event, args) => {
+    const Patient = require('./app/controllers/patient');
+    return await Patient.add(args);
+});
+
+ipcMain.handle('case/findAll', async (event, args) => {
+    const Case = require('./app/controllers/case');
+    return await Case.findAll();
+});
+
 

@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from "@material-ui/core/ListItemText";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from "@mui/material/ListItemText";
 
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
+import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 
 
 const nav = () => {
@@ -25,6 +26,12 @@ const nav = () => {
                         <PeopleAltRoundedIcon />
                     </ListItemIcon>
                     <ListItemText primary="Пациенты" />
+                </ListItem>
+                <ListItem button component={Link} to={"/cases"} >
+                    <ListItemIcon>
+                        <AssignmentRoundedIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="ЛН" />
                 </ListItem>
             </List>
         </div>

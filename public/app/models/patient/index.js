@@ -6,13 +6,14 @@ module.exports = db.define('Patient', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     surName: DataTypes.STRING,
-    dateBirth: DataTypes.INTEGER,
+    dateBirth: DataTypes.DATEONLY,
     adrReg: DataTypes.TEXT,
     adrPhys: DataTypes.TEXT,
     phone: DataTypes.INTEGER,
     jobPlace: DataTypes.TEXT,
     jobPos: DataTypes.TEXT,
+    gender: DataTypes.BOOLEAN
 
 }, {
-    timestamps: false
+ //   timestamps: false
 });

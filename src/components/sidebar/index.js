@@ -3,16 +3,17 @@ import clsx from 'clsx';
 
 //import { reducer, initialState } from "./reducer";
 
-import {Drawer} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import {Drawer} from '@mui/material';
+//import {makeStyles} from '@mui/styles';
 
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import {Link} from "react-router-dom";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
+/*
 const useStyles = makeStyles((theme) => ({
     drawerOpen: {
         width: theme.myDrawer.widthOpen,
@@ -30,11 +31,13 @@ const useStyles = makeStyles((theme) => ({
         width: theme.myDrawer.widthClosed
     },
     drawerPaper: {background: "transparent", border: "none", paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2)}
-}));
+})); */
 
 export default function Sidebar(props) {
 
-    const classes = useStyles();
+    //const classes = useStyles();
+
+    const drawerWidth = 200;
 
     const handleDrawerClick = (e) => {
         e.preventDefault();
@@ -44,13 +47,21 @@ export default function Sidebar(props) {
     return (
         <React.Fragment>
             <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    }
+                }}
                 variant="permanent"
-                classes={{
+                /*classes={{
                     paper: clsx(classes.drawerPaper, {
                         [classes.drawerOpen]: props.sidebarState.open,
                         [classes.drawerClose]: !props.sidebarState.open,
                     }),
-                }}
+                }} */
             >
                 <List>
                     <ListItem onClick={handleDrawerClick} button component={Link} to={"/"}>
