@@ -5,7 +5,7 @@ const resolvePath = p => path.resolve(__dirname, p)
 module.exports = {
     webpack: {
         configure: {
-            target: 'electron-renderer'
+            target: 'web'
         },
         alias: {
             '@components': resolvePath('./src/components'),
