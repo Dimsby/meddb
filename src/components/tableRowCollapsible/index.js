@@ -3,14 +3,20 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import React from "react";
+import DateMoment from "@date-io/moment";
 
 export default function TableRowCollapsible(props) {
-
     const [open, setOpen] = React.useState(false);
+    const dateMoment = new DateMoment();
 
-    const renderRow = () => {
+    const renderCells = () => {
         return props.headers.map(function (header, i) {
-            if (header.data) return <TableCell key={i}>{props.row[header.data]}</TableCell>
+            if (header.data) {
+                let cellData = props.row[header.data]
+                if (header.dateFormat)
+                    cellData = dateMoment.date(cellData).format(header.dateFormat)
+                return <TableCell key={i}>{cellData}</TableCell>
+            }
         })
     }
 
@@ -22,7 +28,7 @@ export default function TableRowCollapsible(props) {
                         {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
                     </IconButton>
                 </TableCell>
-                {renderRow()}
+                {renderCells()}
             </TableRow>
             <TableRow>
                 <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={props.headers.length}>

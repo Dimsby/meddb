@@ -5,6 +5,9 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateAdapter from '@mui/lab/AdapterMoment';
 import DatePicker from '@mui/lab/DatePicker';
 
+import 'moment/locale/ru'
+
+
 import TextField from "@mui/material/TextField";
 
 function FormDatepicker(props) {

@@ -24,7 +24,7 @@ export default function ModalCommon(props) {
             <Modal
                 sx={modalStyle}
                 open={props.open || false}
-                onClose={props.modelCloseHandler}
+                onClose={props.modalCloseHandler}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
             >

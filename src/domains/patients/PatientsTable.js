@@ -14,13 +14,12 @@ import List from "@mui/material/List";
 export default function PatientsTable(props) {
     const headers = [
         {title: '', width: 50},
-        {title: 'Имя', data: 'firstName'},
         {title: 'Фамилия', data: 'lastName'},
+        {title: 'Имя', data: 'firstName'},
         {title: 'Отчество', data: 'surName'},
-        {title: 'Дата рождения', data: 'dateBirth'},
+        {title: 'Дата рождения', data: 'dateBirth', dateFormat: 'DD-MM-YYYY'},
     ];
 
-    console.log('table render');
     return (
         <TableContainer component={Paper}>
             <Table size="small">

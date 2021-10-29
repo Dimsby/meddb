@@ -24,10 +24,10 @@ export default function PatientsPage() {
     }, [])
 
     const [modalIsOpen, setModalOpen] = React.useState(false);
-    const modelOpenHandler = () => {
+    const modalOpenHandler = () => {
         setModalOpen(true);
     }
-    const modelCloseHandler = (params) => {
+    const modalCloseHandler = (params) => {
         setModalOpen(false);
     }
 
@@ -39,7 +39,7 @@ export default function PatientsPage() {
             if (result) {
                 getPatients();
                 alert('Сохранено!');
-                modelCloseHandler();
+                modalCloseHandler();
             } else {
                 alert('Ошибка!')
             }
@@ -49,7 +49,7 @@ export default function PatientsPage() {
 
     return (
         <div>
-            <ModalCommon open={modalIsOpen} modelCloseHandler={modelCloseHandler} width='600px'>
+            <ModalCommon open={modalIsOpen} modalCloseHandler={modalCloseHandler} width='600px'>
                 <PatientsForm formSubmitHandler={formSubmitHandler} />
             </ModalCommon>
             <Grid container spacing={2}>
@@ -61,7 +61,7 @@ export default function PatientsPage() {
                                     variant="contained"
                                     color="primary"
                                     startIcon={<PersonAddRounded/>}
-                                    onClick={modelOpenHandler}
+                                    onClick={modalOpenHandler}
                                 >
                                     Добавить
                                 </Button>

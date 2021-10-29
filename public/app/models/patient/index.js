@@ -1,7 +1,7 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const db = require('./../../');
 
-module.exports = db.define('Patient', {
+const Patient = db.define('Patient', {
     // Model attributes are defined here
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -16,4 +16,6 @@ module.exports = db.define('Patient', {
 
 }, {
  //   timestamps: false
-});
+})
+
+module.exports = Patient

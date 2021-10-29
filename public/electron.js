@@ -56,6 +56,7 @@ app.on('activate', () => {
     }
 })
 
+require('./app/models/relations');
 
 ipcMain.on("toMain", (event, args) => {
     console.log(args);
@@ -70,10 +71,30 @@ ipcMain.handle('patient/add', async (event, args) => {
     const Patient = require('./app/controllers/patient');
     return await Patient.add(args);
 });
+ipcMain.handle('patient/autocomplete', async (event, args) => {
+    const Patient = require('./app/controllers/patient');
+    return await Patient.autocomplete(args);
+});
 
 ipcMain.handle('case/findAll', async (event, args) => {
     const Case = require('./app/controllers/case');
-    return await Case.findAll();
+    const Patient = require('./app/models/patient');
+    return await Case.findAll({
+        include:[
+            { model:Patient, as:'Patient',
+                required:false
+            }
+        ]
+    });
 });
+ipcMain.handle('case/add', async (event, args) => {
+    const Case = require('./app/controllers/case');
+    return await Case.add(args);
+});
+ipcMain.handle('case/update', async (event, args) => {
+    const Case = require('./app/controllers/case');
+    return await Case.update(args);
+});
+
 
 

@@ -4,9 +4,10 @@ const resolvePath = p => path.resolve(__dirname, p)
 
 module.exports = {
     webpack: {
+        /*
         configure: {
             target: 'web'
-        },
+        },*/
         alias: {
             '@components': resolvePath('./src/components'),
             '@domains': resolvePath('./src/domains'),
